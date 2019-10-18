@@ -1,29 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <CurrencySelector :currencies="currencies" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from './components/HelloWorld.vue'
+import CurrencySelector from './components/CurrencySelector.vue'
 
 @Component({
   components: {
-    HelloWorld
+    CurrencySelector
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  currencies: string[];
+
+  constructor () {
+    super()
+    this.currencies = [
+      'EUR',
+      'PLN',
+      'GEL',
+      'DKK',
+      'CZK',
+      'GBP',
+      'SEK',
+      'USD',
+      'RUB'
+    ]
+  }
+}
 </script>
 
 <style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  #app {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    content: ' ';
+    display: table;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
 </style>
